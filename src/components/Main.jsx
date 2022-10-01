@@ -6,7 +6,9 @@ import requests  from '../Request'
 
 const Main = () => {
 
-    const [movie,setMovie] = useState([])
+    const [movies,setMovie] = useState([])
+
+    const movie = movies[Math.floor(Math.random() * movies.length)]
 
     useEffect(()=> {
         axios.get(requests.requestPopular)
@@ -15,7 +17,11 @@ const Main = () => {
     console.log(movie)
 
   return (
-    <div>Main</div>
+    <div className='w-full h-[550px] text-white'>
+        <div className='w-full h-full'>
+            <img className='w-full h-full object-cover' src={`https://image.tmdb.org/t/p/original/${movie?.backdrop_path}`} alt={movie?.title} />
+        </div>
+    </div>
   )
 }
 
